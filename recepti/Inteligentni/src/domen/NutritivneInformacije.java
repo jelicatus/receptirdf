@@ -4,6 +4,7 @@
  */
 package domen;
 
+import java.io.Serializable;
 import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
@@ -15,10 +16,10 @@ import util.Constants;
  */
 @Namespace(Constants.SCHEMA)
 @RdfType("NutritionInformation")
-public class NutritivneInformacije extends Thing {
+public class NutritivneInformacije extends Thing implements Serializable{
     
     @RdfProperty(Constants.SCHEMA + "calories")
-    private double brojKalorija;
+    private int brojKalorija;
     @RdfProperty(Constants.SCHEMA + "carbohydrateContent")
     private double kolicinaUgljenihHidrata;
     @RdfProperty(Constants.SCHEMA + "fatContent")
@@ -31,20 +32,20 @@ public class NutritivneInformacije extends Thing {
     public NutritivneInformacije() {
     }
 
-    public NutritivneInformacije(double brojKalorija, double kolicinaUgljenihHidrata, double kolicinaMasti, double kolicinaProteina, double kolicinaVlakana) {
-        this.brojKalorija = brojKalorija;
-        this.kolicinaUgljenihHidrata = kolicinaUgljenihHidrata;
-        this.kolicinaMasti = kolicinaMasti;
-        this.kolicinaProteina = kolicinaProteina;
-        this.kolicinaVlakana = kolicinaVlakana;
-    }
-
-    public double getBrojKalorija() {
+    public int getBrojKalorija() {
         return brojKalorija;
     }
 
-    public void setBrojKalorija(double brojKalorija) {
+    public void setBrojKalorija(int brojKalorija) {
         this.brojKalorija = brojKalorija;
+    }
+
+    public double getKolicinaUgljenihHidrata() {
+        return kolicinaUgljenihHidrata;
+    }
+
+    public void setKolicinaUgljenihHidrata(double kolicinaUgljenihHidrata) {
+        this.kolicinaUgljenihHidrata = kolicinaUgljenihHidrata;
     }
 
     public double getKolicinaMasti() {
@@ -63,14 +64,6 @@ public class NutritivneInformacije extends Thing {
         this.kolicinaProteina = kolicinaProteina;
     }
 
-    public double getKolicinaUgljenihHidrata() {
-        return kolicinaUgljenihHidrata;
-    }
-
-    public void setKolicinaUgljenihHidrata(double kolicinaUgljenihHidrata) {
-        this.kolicinaUgljenihHidrata = kolicinaUgljenihHidrata;
-    }
-
     public double getKolicinaVlakana() {
         return kolicinaVlakana;
     }
@@ -78,6 +71,10 @@ public class NutritivneInformacije extends Thing {
     public void setKolicinaVlakana(double kolicinaVlakana) {
         this.kolicinaVlakana = kolicinaVlakana;
     }
+
+    
+
+    
     
     
     

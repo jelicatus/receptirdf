@@ -6,6 +6,7 @@
 
 package domen;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,57 +23,54 @@ import util.Constants;
  */
 @Namespace(Constants.SCHEMA)
 @RdfType("Recipe")
-public class Recept extends Thing{
-    private int receptId;
+public class Recept extends Thing implements Serializable{
+    private String tipRecepta; //postaviti id-jeve
     @RdfProperty(Constants.SCHEMA + "name")
     private String naziv;
-    
-    /* @RdfProperty(Constants.SCHEMA + "calories")
-    private double brojKalorija;
-    @RdfProperty(Constants.SCHEMA + "carbohydrateContent")
-    private double kolicinaUgljenihHidrata;
-    @RdfProperty(Constants.SCHEMA + "fatContent")
-    private double kolicinaMasti;
-    @RdfProperty(Constants.SCHEMA + "proteinContent")
-    private double kolicinaProteina;
-    @RdfProperty(Constants.SCHEMA + "fiberContent")
-    private double kolicinaVlakana; */
-    
+      
     @RdfProperty(Constants.SCHEMA + "nutrition")
-    private Collection<NutritivneInformacije> nutritivneInformacije;    
+    private NutritivneInformacije nutritivneInformacije;    
     
     @RdfProperty(Constants.SCHEMA + "totalTime")
     private String vremePripreme;
-    @RdfProperty(Constants.NS + "aggregateRating")
-    private long rejting;
-    @RdfProperty(Constants.SCHEMA+ "image")
-    private String slika;
     
-    @RdfProperty(Constants.NS+ "recipeYield")
-    private String brojOsoba;
+    /*@RdfProperty(Constants.SCHEMA + "aggregateRating")
+    private long rejting;*/
     
-    
-    @RdfProperty(Constants.SCHEMA + "ingridients")
-    private List<String> sastojciString;
+    @RdfProperty(Constants.SCHEMA + "aggregateRating")
+    private AgregatniRejting rejting;    
    
+    
+    @RdfProperty(Constants.SCHEMA+ "recipeYield")
+    private String brojPorcija;
+  
+    
+    @RdfProperty(Constants.SCHEMA + "ingredients")
+    private Collection<String> sastojci;    
+
 
     public Recept() {
-      nutritivneInformacije = new ArrayList<NutritivneInformacije>();
-    }
-
-
-    public void dodajNutritivneInformacije(NutritivneInformacije nu){
-        nutritivneInformacije.add(nu);
-    }
+        sastojci = new ArrayList<String>();
+    }   
     
 
-    public String getBrojOsoba() {
-        return brojOsoba;
+    public NutritivneInformacije getNutritivneInformacije() {
+        return nutritivneInformacije;
     }
 
-    public void setBrojOsoba(String brojOsoba) {
-        this.brojOsoba = brojOsoba;
+    public void setNutritivneInformacije(NutritivneInformacije nutritivneInformacije) {
+        this.nutritivneInformacije = nutritivneInformacije;
     }
+
+    public String getBrojPorcija() {
+        return brojPorcija;
+    }
+
+    public void setBrojPorcija(String brojPorcija) {
+        this.brojPorcija = brojPorcija;
+    }
+       
+   
 
     public String getVremePripreme() {
         return vremePripreme;
@@ -86,21 +84,23 @@ public class Recept extends Thing{
 
    
 
-    public List<String> getSastojciString() {
-        return sastojciString;
+    public Collection<String> getSastojciString() {
+        return sastojci;
     }
 
-    public void setSastojciString(List<String> sastojciString) {
-        this.sastojciString = sastojciString;
+    public void setSastojciString(Collection<String> sastojciString) {
+        this.sastojci = sastojciString;
     }
 
-    public int getReceptId() {
-        return receptId;
+    public String getTipRecepta() {
+        return tipRecepta;
     }
 
-    public void setReceptId(int receptId) {
-        this.receptId = receptId;
+    public void setTipRecepta(String tipRecepta) {
+        this.tipRecepta = tipRecepta;
     }
+
+    
 
     public String getNaziv() {
         return naziv;
@@ -110,30 +110,15 @@ public class Recept extends Thing{
         this.naziv = naziv;
     }
 
-    
- 
-
-    public long getRejting() {
+    public AgregatniRejting getRejting() {
         return rejting;
     }
 
-    public void setRejting(long rejting) {
+    public void setRejting(AgregatniRejting rejting) {
         this.rejting = rejting;
-    }
-
-   
-
-    public String getSlika() {
-        return slika;
-    }
-
-    public void setSlika(String slika) {
-        this.slika = slika;
-    }
-
+    }  
  
-    
-    
+
     
     
     
