@@ -6,7 +6,7 @@ U skladu sa RDF vokabularom Recipe, kreiran je domenski model, predstavljen sled
 
 <img src="https://github.com/jelicatus/InteligetniPretraga/blob/master/domenskiModelIntFinalni.png" />
 
-<h> 3. Rešenje </h1>
+<h1> 3. Rešenje </h1>
 Kreirana je aplikacija koja prikuplja meta podatke o receptima predstavljenim preko Microdata standarda sa web sajta AllRecipes.com I podatke o receptima sa sajta Yummly.com korišćenjem njihovog API-ja. Na osnovu tih podataka ona kreira odgovarajuće objekte domenskog modela, a zatim te objekte čuva u lokalnu RDF bazu. 
 <h1> 4. Tehnička realizacija </h1>
 Aplikacija je rađena u programskom jeziku Java.
